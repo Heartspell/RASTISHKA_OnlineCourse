@@ -1,34 +1,32 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@/components/Analytics";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin", "cyrillic"],
 });
 
 export const metadata: Metadata = {
-  title: "Растишка — Онлайн курсы детского массажа",
+  title: {
+    default: "Светлана Масалова — Онлайн-курсы детского массажа",
+    template: "%s | Светлана Масалова",
+  },
   description:
-    "Платформа онлайн-курсов массажа для детей. Инклюзивный детский садик Растишка.",
+    "Онлайн-курсы детского и грудничкового массажа. Работа с особенными детьми (РАС, ЗПРР, СДВГ). Автор: Светлана Масалова, реабилитолог с 10-летним опытом.",
+  metadataBase: new URL(process.env.SITE_URL ?? "https://masalova.com"),
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="ru"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="ru" className={`${inter.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col bg-background text-foreground">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

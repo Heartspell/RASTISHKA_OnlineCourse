@@ -2,54 +2,23 @@ import type { NextAuthConfig } from "next-auth";
 
 export const authConfig: NextAuthConfig = {
   pages: {
-    signIn: "/login",
-  },
-  session: {
-    strategy: "jwt",
+    signIn: "/admin/login",
   },
   callbacks: {
-    async jwt({ token, user }) {
+    jwt({ token, user }) {
       if (user) {
-        token.role = user.role;
         token.id = user.id;
+        token.role = (user as { role?: string }).role;
       }
       return token;
     },
-    async session({ session, token }) {
-      if (session.user) {
-        session.user.role = token.role as string;
+    session({ session, token }) {
+      if (token && session.user) {
         session.user.id = token.id as string;
+        (session.user as { role?: string }).role = token.role as string;
       }
       return session;
     },
-    async authorized({ auth, request }) {
-      const { pathname } = request.nextUrl;
-      const isLoggedIn = !!auth;
-      const role = auth?.user?.role;
-
-      if (pathname.startsWith("/admin")) {
-        if (!isLoggedIn) return false;
-        if (role !== "ADMIN")
-          return Response.redirect(new URL("/dashboard", request.url));
-        return true;
-      }
-
-      if (
-        pathname.startsWith("/dashboard") ||
-        pathname.startsWith("/courses/")
-      ) {
-        return isLoggedIn;
-      }
-
-      if (pathname === "/login" || pathname === "/register") {
-        if (isLoggedIn) {
-          const dest = role === "ADMIN" ? "/admin" : "/dashboard";
-          return Response.redirect(new URL(dest, request.url));
-        }
-      }
-
-      return true;
-    },
   },
-  providers: [], // Providers are added in the full auth.ts
+  providers: [],
 };
