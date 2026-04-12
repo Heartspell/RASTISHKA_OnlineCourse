@@ -177,3 +177,14 @@ model IntegrationLog {
   @@index([orderId, createdAt])
   @@index([source, createdAt])
 }
+
+// ─── Media Files (uploaded images stored in PostgreSQL) ───────────────────────
+
+model MediaFile {
+  id        String   @id @default(cuid())
+  filename  String
+  mimeType  String
+  size      Int
+  data      Bytes
+  createdAt DateTime @default(now())
+}
