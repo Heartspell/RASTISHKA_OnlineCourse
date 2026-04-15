@@ -1,0 +1,72 @@
+{
+  "name": "massage-masalova",
+  "description": "Next.js application configured for Heroku deployment",
+  "keywords": [
+    "nextjs",
+    "heroku",
+    "prisma",
+    "postgresql"
+  ],
+  "website": "https://your-domain.com",
+  "repository": "https://github.com/your-org/your-repo",
+  "env": {
+    "NODE_ENV": {
+      "value": "production"
+    },
+    "AUTH_SECRET": {
+      "description": "Generate with: openssl rand -base64 32"
+    },
+    "AUTH_TRUST_HOST": {
+      "value": "true"
+    },
+    "SITE_URL": {
+      "description": "Public app URL, for example https://your-app.herokuapp.com"
+    },
+    "NEXT_PUBLIC_APP_URL": {
+      "description": "Public app URL exposed to the client"
+    },
+    "ADMIN_EMAIL": {
+      "description": "Initial admin email used for seed/manual setup",
+      "required": false
+    },
+    "ADMIN_PASSWORD": {
+      "description": "Initial admin password used for seed/manual setup",
+      "required": false
+    },
+    "GETCOURSE_ACCOUNT": {
+      "required": false
+    },
+    "GETCOURSE_API_KEY": {
+      "required": false
+    },
+    "FREEDOMPAY_MERCHANT_ID": {
+      "required": false
+    },
+    "FREEDOMPAY_SECRET_KEY": {
+      "required": false
+    },
+    "FREEDOMPAY_TEST_MODE": {
+      "value": "true",
+      "required": false
+    },
+    "YOOKASSA_SHOP_ID": {
+      "required": false
+    },
+    "YOOKASSA_SECRET_KEY": {
+      "required": false
+    },
+    "YOOKASSA_TEST_MODE": {
+      "value": "true",
+      "required": false
+    },
+    "RESEND_API_KEY": {
+      "required": false
+    },
+    "MAIL_FROM": {
+      "required": false
+    }
+  },
+  "addons": [
+    "heroku-postgresql:essential-0"
+  ]
+}
