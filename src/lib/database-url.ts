@@ -24,7 +24,6 @@ function ensureSslMode(databaseUrl: string) {
   if (url.searchParams.get("sslmode") === "require" && !url.searchParams.has("uselibpqcompat")) {
     url.searchParams.set("uselibpqcompat", "true");
   }
-
   return url.toString();
 }
 
