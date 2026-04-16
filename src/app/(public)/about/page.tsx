@@ -1,9 +1,9 @@
-import { db } from "@/lib/db"
-import { Award, BookOpen, Heart, Users } from "lucide-react"
-import { Metadata } from "next"
-import Image from "next/image"
-import Link from "next/link"
-import { connection } from "next/server"
+import { db } from "@/lib/db";
+import { Metadata } from "next";
+import { connection } from "next/server";
+import Image from "next/image";
+import Link from "next/link";
+import { Award, Heart, BookOpen, Users } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
