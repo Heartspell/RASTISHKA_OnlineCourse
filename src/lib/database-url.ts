@@ -5,6 +5,15 @@ function ensureSslMode(databaseUrl: string) {
     url.searchParams.set("sslmode", "require");
   }
 
+  const sslMode = url.searchParams.get("sslmode");
+
+  if (
+    (sslMode === "require" || sslMode === "prefer") &&
+    !url.searchParams.has("uselibpqcompat")
+  ) {
+    url.searchParams.set("uselibpqcompat", "true");
+  }
+
   return url.toString();
 }
 
