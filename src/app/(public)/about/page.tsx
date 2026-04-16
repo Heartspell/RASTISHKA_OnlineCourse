@@ -1,9 +1,9 @@
-import { db } from "@/lib/db";
-import { Metadata } from "next";
-import { connection } from "next/server";
-import Image from "next/image";
-import Link from "next/link";
-import { Award, Heart, BookOpen, Users } from "lucide-react";
+import { db } from "@/lib/db"
+import { Award, BookOpen, Heart, Users } from "lucide-react"
+import { Metadata } from "next"
+import Image from "next/image"
+import Link from "next/link"
+import { connection } from "next/server"
 
 export const dynamic = "force-dynamic";
 
@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: page?.seoTitle ?? "Обо мне | Светлана Масалова",
     description:
       page?.seoDesc ??
-      "Светлана Масалова — реабилитолог, специалист по детскому массажу. Работает с детьми с РАС, ЗПРР, СДВГ.",
+      "Светлана Масалова — реабилитолог, специалист по детскому массажу. Работает с детьми с аутизм, РАС, ЗПРР, ЗПР, СДВГ, ДЦП.",
   };
 }
 
