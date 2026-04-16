@@ -37,7 +37,7 @@ export default async function AboutPage() {
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
                 Реабилитолог и специалист по детскому массажу с опытом более 10 лет.
-                Работаю с особенными детьми — РАС, ЗПРР, СДВГ, ДЦП.
+                Работаю с особенными детьми — с аутизм, РАС, ЗПРР, ЗПР, СДВГ, ДЦП.
               </p>
               <div className="flex flex-wrap gap-3">
                 {[
